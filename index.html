@@ -16,11 +16,26 @@
         <p class="login__slogan">
           The app who's blox helps you build your budget, not break it.
         </p>
-        <button class="button-click-here" id="button-option-login">
+        <button
+          class="button-click-here"
+          id="button-option-login"
+          type="button"
+        >
           Click here to login
         </button>
-        <button class="button-click-here" id="button-option-signup">
+        <button
+          class="button-click-here"
+          id="button-option-signup"
+          type="button"
+        >
           Click here to create a new account
+        </button>
+        <button
+          class="button-click-here"
+          id="button-option-add-expense"
+          type="button"
+        >
+          Click here to create a new expense item
         </button>
       </div>
 
@@ -138,6 +153,65 @@
 
               <button class="form__button" type="click" id="#form-save-button">
                 login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- // ADD EXPENSE FORM // -->
+      <div class="form-overlay" id="expense-form">
+        <!-- // help change bg opac. when form is opened & positioning form// -->
+        <div class="form__container">
+          <form class="form">
+            <div class="form__header">
+              <div class="form__title">Add Expense</div>
+              <button
+                type="button"
+                class="form__close-button"
+                id="add-expense-close-button"
+              >
+                X
+              </button>
+            </div>
+            <div class="form__inputs">
+              <label for="expense-category" class="form__label"
+                >Expense Category</label
+              >
+              <select id="expense-category" name="expense-category">
+                <option value="">-- Select a category --</option>
+                <option value="san-jose">Food Expense</option>
+                <option value="tamarindo">Transportation Expense</option>
+                <option value="monteverde">Communication Expense</option>
+                <option value="manuel-antonio">Family Expense</option>
+                <option value="manuel-antonio">Fun Expense</option>
+              </select>
+
+              <label for="expense-amount" class="form__label"
+                >Expense amount</label
+              >
+              <input id="expense-amount" type="number" min="1" />
+
+              <label for="expense-date" class="form__label"
+                >Date of expense:</label
+              >
+              <input type="date" id="expense-date" class="form__input" />
+
+              <label for="expense-details" class="form__label"
+                >Expense item</label
+              >
+              <input
+                type="text"
+                id="expense-details"
+                placeholder="Describe your expense item here"
+                class="form__input"
+                required
+                minlength="3"
+                maxlength="30"
+              />
+
+              <button class="form__button" type="click" id="add-expense-item">
+                Add Expense Item
               </button>
             </div>
           </form>

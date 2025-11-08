@@ -20,6 +20,21 @@ const loginPassword = loginForm.querySelector("#password");
 const loginSubmitButton = loginForm.querySelector(".form__login-button");
 const closeLoginFormButton = loginForm.querySelector("#login-close-button");
 
+// ====== ADD EXPENSE FORM ITEMS ====== //
+
+const openAddExpenseFormButton = document.querySelector(
+  "#button-option-add-expense"
+);
+const addExpenseFormContainer = document.querySelector("#expense-form");
+const addExpenseForm = addExpenseFormContainer.querySelector(".form");
+const expenseCategory = addExpenseForm.querySelector("#expense-category");
+const expenseAmount = addExpenseForm.querySelector("#expense-amount");
+const expenseDate = addExpenseForm.querySelector(".expense-date");
+const expenseDetails = addExpenseForm.querySelector("#expense-details");
+const addExpenseSubmitButton = addExpenseForm.querySelector("add-expense-item");
+const closeAddExpenseFormButton = addExpenseForm.querySelector(
+  "#add-expense-close-button"
+);
 // ====== OPEN & CLOSE FORM FUNCTIONS ====== //
 
 function openForm(form) {
@@ -62,7 +77,6 @@ signupForm.addEventListener("submit", (evt) => {
 
 // ====== OPEN LOGIN FORM ====== //
 openLoginFormButton.addEventListener("click", () => {
-  console.log("login form");
   openForm(loginFormContainer);
 });
 
@@ -76,4 +90,21 @@ loginForm.addEventListener("submit", (evt) => {
 
 closeLoginFormButton.addEventListener("click", (evt) => {
   closeForm(loginFormContainer);
+});
+
+// ====== OPEN ADD EXPENSE FORM ====== //
+openAddExpenseFormButton.addEventListener("click", () => {
+  openForm(addExpenseFormContainer);
+});
+
+// ====== 'CLOSE' EXPENSE FORM ====== //
+addExpenseForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  //  add new expense to exsisting expense data
+  //  add reset inputs functionality
+  closeForm(addExpenseFormContainer);
+});
+
+closeAddExpenseFormButton.addEventListener("click", (evt) => {
+  closeForm(addExpenseFormContainer);
 });
