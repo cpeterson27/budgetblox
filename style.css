@@ -1,0 +1,96 @@
+* {
+  outline: red solid;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 50px;
+  font-family: "Courier New", Courier, monospace;
+  height: 100vh;
+}
+
+/* LOGIN LOGO */
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 60%;
+  font-size: 30px;
+}
+
+.login__logo {
+  margin: 0 0 60px 0;
+}
+
+.login__slogan {
+  margin: 0 0 60px 0;
+}
+
+/* FORMS STYLING */
+
+.form-overlay {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(190, 133, 133, 0.54);
+  opacity: 0;
+  transition:
+    visibility 0.3s,
+    opacity 0.3s ease-in;
+  padding: 20px;
+  max-width: 100%;
+}
+
+.form__container {
+  background-color: rgb(255, 136, 0);
+  margin: 0 0 60px 0;
+  font-size: 20px;
+}
+
+.form_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.form__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form__purpose {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.form__label {
+  font-size: 24px;
+  padding: 4px;
+}
+
+.form__inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form__input {
+  font-size: 20px;
+}
+
+#signup-suggestion {
+  font-size: 24px;
+  margin: 0 0 60px 0;
+}

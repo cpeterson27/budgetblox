@@ -9,7 +9,141 @@
   <body class="body">
     <header></header>
     <main></main>
-    <section></section>
+    <section>
+      <!-- // LOGIN LOGO // -->
+      <div class="login">
+        <h1 class="login__logo">Budget Blox</h1>
+        <p class="login__slogan">
+          The app who's blox helps you build your budget, not break it.
+        </p>
+        <button class="button-click-here" id="button-option-login">
+          Click here to login
+        </button>
+        <button class="button-click-here" id="button-option-signup">
+          Click here to create a new account
+        </button>
+      </div>
+
+      <!-- // SIGNUP FORM // -->
+      <div class="form-overlay" id="signup-form">
+        <!-- // help change bg opac. when form is opened & positioning form// -->
+        <div class="form__container">
+          <form class="form">
+            <div class="form__header">
+              <div class="form__title">Signup</div>
+              <button
+                type="button"
+                class="form__close-button"
+                id="signup-close-button"
+              >
+                X
+              </button>
+            </div>
+            <div class="form__inputs">
+              <label for="email" class="form__label">User email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                class="form__input"
+                required
+              />
+
+              <label for="username-new" class="form__label">New Username</label>
+              <input
+                type="text"
+                id="username-new"
+                placeholder="Create a unique username"
+                class="form__input"
+                required
+                minlength="8"
+                maxlength="15"
+              />
+
+              <label for="password-new" class="form__label"
+                >Create a Password</label
+              >
+              <input
+                type="text"
+                id="password-new"
+                placeholder="Type your password"
+                class="form__input"
+                required
+                minlength="8"
+                maxlength="20"
+              />
+
+              <label for="password-retype" class="form__label"
+                >Retype password</label
+              >
+              <input
+                type="text"
+                id="password-retype"
+                placeholder="Retype your password"
+                class="form__input"
+                required
+                minlength="8"
+                maxlength="20"
+              />
+
+              <button
+                class="form__button"
+                type="click"
+                id="#signup-submit-button"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- // LOGIN FORM // -->
+      <div class="form-overlay" id="login-form">
+        <!-- // help change bg opac. when form is opened & positioning form// -->
+        <div class="form__container">
+          <form class="form">
+            <div class="form__header">
+              <div class="form__title">Login</div>
+              <button
+                type="button"
+                class="form__close-button"
+                id="login-close-button"
+              >
+                X
+              </button>
+            </div>
+            <div class="form__inputs">
+              <label for="username" class="form__label">Username</label>
+              <input
+                type="text"
+                id="username"
+                placeholder="Type your username"
+                class="form__input"
+                required
+                minlength="8"
+                maxlength="15"
+              />
+
+              <label for="password" class="form__label">Password</label>
+              <input
+                type="text"
+                id="password"
+                placeholder="Type your password"
+                class="form__input"
+                required
+                minlength="8"
+                maxlength="20"
+              />
+
+              <button class="form__button" type="click" id="#form-save-button">
+                login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
     <footer></footer>
     <script src="./script.js"></script>
   </body>
