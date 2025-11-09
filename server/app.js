@@ -1,0 +1,45 @@
+require('dotenv').config();
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const usersRouter = require("./routes/users");
+const expensesRouter = require("./routes/expenses")
+const authRoutes = require("./routes/authRoutes")
+const { sendNotFound } = require("./utils/errors");
+
+const app = express();
+
+app.use(express.json());
+app.use(cookieParser());
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELTE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authroization']
+}));
+
+app.use(express.urlencoded({ extended: true }));
+
+
+app.use("/api/auth", authRoutes);
+app.use("/api/users", usersRouter);
+app.use("/api/expenses", expensesRouter);
+
+
+mongoose.set("strictQuery", false);
+mongoose
+  .connect("mongodb://127.0.0.1:27017/budgetblox")
+  .then(() => console.log("MongoDB connected"))
+  .catch(console.error);
+
+app.use((req, res) => {
+res.status(sendNotFound).json({message: "Requested resource not found"});
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
+module.exports = app;

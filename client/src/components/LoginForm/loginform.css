@@ -1,0 +1,70 @@
+/* LoginForm Component */
+/* Dark background overlay */
+.form-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loginform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 60%;
+  gap: var(--gap-md);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.loginform__logo {
+  margin: 0 0 var(--gap-lg) 0;
+  font-size: 1.5rem;
+}
+
+.loginform__slogan {
+  margin: 0 0 var(--gap-lg) 0;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.loginform__card {
+  background: var(--form-bg);
+  padding: 28px;
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.loginform__field { margin-bottom: 12px; }
+
+.loginform__label { display: block; font-size: 1.25rem; margin-bottom: 6px; }
+
+.loginform__input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+}
+
+.loginform__submit {
+  display:inline-block;
+  margin-top: 12px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+/* Responsive */
+@media (max-width:720px){
+  .loginform { max-width: 100%; padding-inline: 12px; }
+  .loginform__card { padding: 18px; }
+}

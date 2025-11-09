@@ -1,0 +1,20 @@
+/* base.css - minimal reset & layout */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; font-size: var(--base-font-size); color: var(--text-color); }
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--page-padding);
+  font-family: var(--font-mono);
+  min-height: 100vh;
+  background: #fff;
+}
+
+/* Accessibility: keep keyboard focus visible — use tasteful ring instead of global outline */
+:focus { outline: none; box-shadow: 0 0 0 3px rgba(0,0,0,0.06), 0 0 0 4px rgba(210,210,210,0.2); border-radius: 4px; }
+
+/* Common utilities used by components */
+.u-center { display:flex; justify-content:center; align-items:center; }
+.u-column { display:flex; flex-direction:column; }
+.container { width: min(1200px, 100%); margin-inline: auto; padding-inline: 16px; }

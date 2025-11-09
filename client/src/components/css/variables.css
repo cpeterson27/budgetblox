@@ -1,0 +1,20 @@
+/* variables.css - keep simple, shared values */
+:root{
+  /* colors */
+  --bg-overlay: rgba(190,133,133,0.54);
+  --form-bg: #ffc37f;           /* rgb(255,195,127) */
+  --text-color: #222;
+  --muted: rgba(0,0,0,0.6);
+  --input-border: rgba(0,0,0,0.12);
+
+  /* spacing */
+  --page-padding: 50px;
+  --gap-lg: 60px;
+  --gap-md: 30px;
+  --gap-sm: 16px;
+
+  /* typography */
+  --font-mono: "Courier New", Courier, monospace;
+  --base-font-size: 16px;
+  --radius: 8px;
+}
