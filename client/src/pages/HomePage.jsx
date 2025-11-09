@@ -8,21 +8,19 @@ function HomePage({ onLogin }) {
   const [showSignup, setShowSignup] = useState(false);
   const [user, setUser] = useState(null);
 
-  // Check if user is already authenticated
   useEffect(() => {
     const checkAuth = async () => {
       const data = await api.checkAuth();
       if (data.authenticated) {
-        setUser(data);
+        setUser(data.user);
         setShowLogin(false);
         setShowSignup(false);
-        onLogin(); // update App.jsx
+        onLogin(data.user);
       }
     };
     checkAuth();
-  }, []);
+  }, [onLogin]);
 
-  // Real login
   const handleLogin = async (email, password) => {
     try {
       const data = await api.login(email, password);
@@ -30,17 +28,15 @@ function HomePage({ onLogin }) {
       setUser(data.user);
       setShowLogin(false);
       setShowSignup(false);
-      onLogin(); // updates App.jsx
+      onLogin(data.user);
     } catch (err) {
       alert('Login failed: ' + err.message);
     }
   };
 
-  // Real signup
   const handleSignup = async (name, email, password) => {
     try {
-      const data = await api.signup(name, email, password);
-      console.log('Signup success:', data);
+      await api.signup(name, email, password);
       alert('Account created! Please login.');
       setShowSignup(false);
       setShowLogin(true);
@@ -51,21 +47,20 @@ function HomePage({ onLogin }) {
 
   return (
     <div>
-      {/* Show Login Form */}
       <LoginForm
         isOpen={showLogin}
         onClose={() => setShowLogin(false)}
         onSubmit={handleLogin}
+        onSwitchToSignup={() => {
+          setShowLogin(false);
+          setShowSignup(true);
+        }}
       />
-
-      {/* Show Signup Form */}
       <SignupForm
         isOpen={showSignup}
         onClose={() => setShowSignup(false)}
         onSubmit={handleSignup}
       />
-
-      {/* Dashboard / User home */}
       {user && (
         <section className="user-home">
           <h2 className="login-home-title">Welcome, {user.name}!</h2>
@@ -77,12 +72,15 @@ function HomePage({ onLogin }) {
           </div>
         </section>
       )}
-
-      {/* Buttons to switch forms if not logged in */}
       {!user && !showLogin && !showSignup && (
         <div style={{ textAlign: 'center', marginTop: '40px' }}>
           <button onClick={() => setShowLogin(true)}>Login</button>
-          <button onClick={() => setShowSignup(true)} style={{ marginLeft: '12px' }}>Signup</button>
+          <button
+            onClick={() => setShowSignup(true)}
+            style={{ marginLeft: '12px' }}
+          >
+            Signup
+          </button>
         </div>
       )}
     </div>

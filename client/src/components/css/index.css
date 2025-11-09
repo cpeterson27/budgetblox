@@ -61,16 +61,27 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #444;
+  color: #fff;
   cursor: pointer;
   transition: border-color 0.25s, background-color 0.25s;
 }
 button:hover {
-  border-color: var(--link-color);
+  border-color: #555;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.button-click-here {
+  background-color: #1e90ff; /* e.g., a blue button for that class */
+  color: #fff;
+  border: none;
+}
+
+.button-click-here:hover {
+  background-color: #1c86ee;
 }
 
 /* Utilities */

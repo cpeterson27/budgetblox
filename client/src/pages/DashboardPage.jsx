@@ -1,3 +1,4 @@
+// DashboardPage.jsx
 import { useState, useEffect } from 'react';
 import AddExpenseForm from '../components/AddExpenseForm/AddExpenseForm';
 import { api } from '../utils/api';
