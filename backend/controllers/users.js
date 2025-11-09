@@ -1,7 +1,7 @@
-bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-const User = require("../models/user");
+const User = require('../models/user');
 const {
   sendBadRequest,
   sendNotFound,
@@ -9,9 +9,9 @@ const {
   sendCreate,
   sendConflict,
   sendUnauthorized,
-} = require("../utils/errors");
+} = require('../utils/errors');
 
-const { JWT_SECRET } = require("../utils/config");
+const { JWT_SECRET } = require('../utils/config');
 
 // CREATE - POST
 
@@ -20,16 +20,16 @@ const createUser = async (req, res) => {
     const { name, email, password } = req.body;
 
     if (!email) {
-      return sendBadRequest(res, "Email is required");
+      return sendBadRequest(res, 'Email is required');
     }
 
     if (!password) {
-      return sendBadRequest(res, "Password is required");
+      return sendBadRequest(res, 'Password is required');
     }
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return sendConflict(res, "Email already exists");
+      return sendConflict(res, 'Email already exists');
     }
 
     const hash = await bcrypt.hash(password, 10);
@@ -40,40 +40,40 @@ const createUser = async (req, res) => {
     });
 
     const userWithoutPassword = await User.findById(user._id)
-      .select("-password")
+      .select('-password')
       .lean();
 
     return sendCreate(res, userWithoutPassword);
   } catch (err) {
     console.error(err);
     if (err.code === 11000) {
-      return sendConflict(res, "Email already exists");
+      return sendConflict(res, 'Email already exists');
     }
-    if (err.name === "ValidationError") {
-      return sendBadRequest(res, "Validation Failed");
+    if (err.name === 'ValidationError') {
+      return sendBadRequest(res, 'Validation Failed');
     }
-    return sendInternalError(res, "An error has occurred on the server");
+    return sendInternalError(res, 'An error has occurred on the server');
   }
 };
 
-//READ - GET
+// READ - GET
 
 const getCurrentUser = async (req, res) => {
   try {
     const userId = req.user._id;
 
     const user = await User.findById(userId)
-      .select("-password")
+      .select('-password')
       .orFail()
       .lean();
 
     return res.json(user);
   } catch (err) {
     console.error(err);
-    if (err.name === "DocumentNotFoundError") {
-      return sendNotFound(res, "User not found");
+    if (err.name === 'DocumentNotFoundError') {
+      return sendNotFound(res, 'User not found');
     }
-    return sendInternalError(res, "An error has occurred on the server");
+    return sendInternalError(res, 'An error has occurred on the server');
   }
 };
 
@@ -83,19 +83,23 @@ const login = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return sendBadRequest(res, "Email and password are required");
+      return sendBadRequest(res, 'Email and password are required');
     }
 
     const user = await User.findUserByCredentials(email, password);
 
-    const token = JWT_SECRET.sign({ _id: user._id }, JWT_SECRET, {
-      expiresIn: "7d",
+    const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
+      expiresIn: '7d',
     });
 
-    return res.send({ token });
+const userData = { _id: user._id, name: user.name, email: user.email};
+
+    return res
+    .status(200)
+    .send({ token, user: userData });
   } catch (err) {
     console.error(err);
-    return sendUnauthorized(res, "Invalid email or password");
+    return sendUnauthorized(res, 'Invalid email or password');
   }
 };
 
