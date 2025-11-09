@@ -1,0 +1,3 @@
+const JWT_SECRET = "0cbaa85034aa90d749b3b457db76853853ecd997b9e87c91b001c1aec1fa3ff4"
+
+module.exports = {JWT_SECRET}
