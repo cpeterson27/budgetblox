@@ -62,7 +62,7 @@ function LoginForm({ isOpen, onClose, onSubmit, onSwitchToSignup }) {
               onClick={onSwitchToSignup}
             >
               {' '}
-              Don’t have an account? Sign Up
+              Don’t have an account? Sign Up
             </button>
           </form>
         </div>

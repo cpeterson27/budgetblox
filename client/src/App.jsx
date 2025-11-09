@@ -1,13 +1,5 @@
-// App.jsx
 import React, { useState, useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-  useNavigate
-} from 'react-router-dom';
-
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import HomePage from './pages/HomePage.jsx';
 import DashboardPage from './pages/DashboardPage';
 import { api } from './utils/api';
@@ -82,12 +74,7 @@ function App() {
   );
 }
 
-export default function AppContainer() {
-  return (
-    <Router>
-      <App />
-    </Router>
-  );
-}
+export default App;
+
 
 
