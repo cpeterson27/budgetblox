@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget Blox</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="body">
+    <header></header>
+    <main></main>
+    <section class="user-forms">
+      <!-- // LOGIN LOGO // -->
+      <div class="login">
+        <h1 class="login__logo">Budget Blox</h1>
+        <p class="login__slogan">
+          The app who's blox helps you build your budget, not break it.
+        </p>
+        <button
+          class="button-click-here"
+          id="button-option-login"
+          type="button"
+        >
+          Click here to login
+        </button>
+        <button
+          class="button-click-here"
+          id="button-option-signup"
+          type="button"
+        >
+          Click here to create a new account
+        </button>
+        <button
+          class="button-click-here"
+          id="button-option-add-expense"
+          type="button"
+        >
+          Click here to create a new expense item
+        </button>
+      </div>
+
+      <!-- // SIGNUP FORM // -->
+      <div class="form-overlay" id="signup-form">
+        <!-- // help change bg opac. when form is opened & positioning form// -->
+        <div class="form__container">
+          <form class="form">
+            <div class="form__header">
+              <div class="form__title">Signup</div>
+              <button
+                type="button"
+                class="form__close-button"
+                id="signup-close-button"
+              >
+                X
+              </button>
+            </div>
+            <div class="form__inputs">
+              <label for="email" class="form__label">User email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                class="form__input"
+                required
+              />
+
+              <label for="username-new" class="form__label">New Username</label>
+              <input
+                type="text"
+                id="username-new"
+                placeholder="Create a unique username"
+                class="form__input"
+                required
+                minlength="8"
+                maxlength="15"
+              />
+
+              <label for="password-new" class="form__label"
+                >Create a Password</label
+              >
+              <input
+                type="text"
+                id="password-new"
+                placeholder="Type your password"
+                class="form__input"
+                required
+                minlength="8"
+                maxlength="20"
+              />
+
+              <label for="password-retype" class="form__label"
+                >Retype password</label
+              >
+              <input
+                type="text"
+                id="password-retype"
+                placeholder="Retype your password"
+                class="form__input"
+                required
+                minlength="8"
+                maxlength="20"
+              />
+
+              <button
+                class="form__button"
+                type="click"
+                id="#signup-submit-button"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- // LOGIN FORM // -->
+      <div class="form-overlay" id="login-form">
+        <!-- // help change bg opac. when form is opened & positioning form// -->
+        <div class="form__container">
+          <form class="form">
+            <div class="form__header">
+              <div class="form__title">Login</div>
+              <button
+                type="button"
+                class="form__close-button"
+                id="login-close-button"
+              >
+                X
+              </button>
+            </div>
+            <div class="form__inputs">
+              <label for="username" class="form__label">Username</label>
+              <input
+                type="text"
+                id="username"
+                placeholder="Type your username"
+                class="form__input"
+                required
+                minlength="8"
+                maxlength="15"
+              />
+
+              <label for="password" class="form__label">Password</label>
+              <input
+                type="text"
+                id="password"
+                placeholder="Type your password"
+                class="form__input"
+                required
+                minlength="8"
+                maxlength="20"
+              />
+
+              <button class="form__button" type="click" id="#form-save-button">
+                login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- // ADD EXPENSE FORM // -->
+      <div class="form-overlay" id="expense-form">
+        <!-- // help change bg opac. when form is opened & positioning form// -->
+        <div class="form__container">
+          <form class="form">
+            <div class="form__header">
+              <div class="form__title">Add Expense</div>
+              <button
+                type="button"
+                class="form__close-button"
+                id="add-expense-close-button"
+              >
+                X
+              </button>
+            </div>
+            <div class="form__inputs">
+              <label for="expense-category" class="form__label"
+                >Expense Category</label
+              >
+              <select id="expense-category" name="expense-category">
+                <option value="">-- Select a category --</option>
+                <option value="san-jose">Food Expense</option>
+                <option value="tamarindo">Transportation Expense</option>
+                <option value="monteverde">Home Expense</option>
+                <option value="manuel-antonio">Family Expense</option>
+                <option value="manuel-antonio">Fun Expense</option>
+              </select>
+
+              <label for="expense-amount" class="form__label"
+                >Expense amount</label
+              >
+              <input id="expense-amount" type="number" min="1" />
+
+              <label for="expense-date" class="form__label"
+                >Date of expense:</label
+              >
+              <input type="date" id="expense-date" class="form__input" />
+
+              <label for="expense-details" class="form__label"
+                >Expense item</label
+              >
+              <input
+                type="text"
+                id="expense-details"
+                placeholder="Describe your expense item here"
+                class="form__input"
+                required
+                minlength="3"
+                maxlength="30"
+              />
+
+              <button class="form__button" type="click" id="add-expense-item">
+                Add Expense Item
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="user-account-home">
+      <!-- page user sees after logging in -->
+      <!-- // EXPENSE BLOX BY CATEGORY // -->
+      <p class="login-home-title">Building Blox Balances</p>
+      <div class="blox">
+        <div class="blox__icon">Food Expenses</div>
+        <div class="blox__icon">Transportation Expenses</div>
+        <div class="blox__icon">Home Expenses</div>
+        <div class="blox__icon">Family Expenses</div>
+        <div class="blox__icon">Fun Expenses</div>
+      </div>
+
+      <!-- // FOOD EXPENSE DETAILS // -->
+       <div class="blox">
+      <p class="block-table-title">Food Expenses</p>
+      <div class="block-table">
+        <ul class="blox-table__columns">
+          <li class="blox-table__column">Food Expense Description</li>
+          <li class="blox-table__column">Date</li>
+          <li class="blox-table__column">Amount</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Cheese sandwich</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$4</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Cheese sandwich</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$5</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Cheese sandwich</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$6</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Cheese sandwich</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$7</li>
+        </ul>
+      </div>
+
+      <!-- // TRANSPORTATION EXPENSE DETAILS // -->
+      <p class="block-table-title">Transportation Expenses</p>
+      <div class="block-table">
+        <ul class="blox-table__columns">
+          <li class="blox-table__column">Transportation Expense Description</li>
+          <li class="blox-table__column">Date</li>
+          <li class="blox-table__column">Amount</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Gas</li>
+          <li class="expense-item__date">01 / 01 / 2025</li>
+          <li class="expense-item__amount">$4</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Tires</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$5</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Oil Change</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$6</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Uber</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$7</li>
+        </ul>
+      </div>
+
+      <!-- // HOME EXPENSE DETAILS // -->
+      <p class="block-table-title">Home Expenses</p>
+      <div class="block-table">
+        <ul class="blox-table__columns">
+          <li class="blox-table__column">Transportation Expense Description</li>
+          <li class="blox-table__column">Date</li>
+          <li class="blox-table__column">Amount</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Phone</li>
+          <li class="expense-item__date">01 / 01 / 2025</li>
+          <li class="expense-item__amount">$4</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Rent</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$5</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Utilities</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$6</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Water bill</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$7</li>
+        </ul>
+      </div>
+
+      <!-- // FAMILY EXPENSE DETAILS // -->
+      <p class="block-table-title">Family Expenses</p>
+      <div class="block-table">
+        <ul class="blox-table__columns">
+          <li class="blox-table__column">Family Expense Description</li>
+          <li class="blox-table__column">Date</li>
+          <li class="blox-table__column">Amount</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Sara's new school shoes</li>
+          <li class="expense-item__date">01 / 01 / 2025</li>
+          <li class="expense-item__amount">$4</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Family vacation trip</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$5</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Kids bus passes</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$6</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">College tuition</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$7</li>
+        </ul>
+      </div>
+
+      <!-- // FAMILY EXPENSE DETAILS // -->
+      <p class="block-table-title">Fun Expenses</p>
+      <div class="block-table">
+        <ul class="blox-table__columns">
+          <li class="blox-table__column">Fun Expense Description</li>
+          <li class="blox-table__column">Date</li>
+          <li class="blox-table__column">Amount</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Makeup</li>
+          <li class="expense-item__date">01 / 01 / 2025</li>
+          <li class="expense-item__amount">$4</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Videogames</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$5</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">Concert tickets</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$6</li>
+        </ul>
+        <ul class="expense-item">
+          <li class="expense-item__description">New tattoo</li>
+          <li class="expense-item__date">02 / 02 / 2025</li>
+          <li class="expense-item__amount">$7</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- // EXPENSE TOTALS // -->
+    <p class="block-table-title">Blox Balances</p>
+    <div class="block-table">
+      <ul class="blox-table__columns">
+        <li class="blox-table__column">Food</li>
+        <li class="blox-table__column">Transporation</li>
+        <li class="blox-table__column">Home</li>
+        <li class="blox-table__column">Family</li>
+        <li class="blox-table__column">Fun</li>
+        <li class="blox-table__column">Total</li>
+      </ul>
+      <ul class="blox-table__columns">
+        <li class="blox-table__column">$30</li>
+        <li class="blox-table__column">$40</li>
+        <li class="blox-table__column">$50</li>
+        <li class="blox-table__column">$60</li>
+        <li class="blox-table__column">$70</li>
+        <li class="blox-table__column">$80</li>
+      </ul>
+    </div>
+    </div>
+
+    <footer></footer>
+    <script src="./script.js"></script>
+  </body>
+</html>
