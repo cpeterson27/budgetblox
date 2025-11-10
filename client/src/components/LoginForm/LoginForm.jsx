@@ -15,16 +15,32 @@ function LoginForm({ isOpen, onClose, onSubmit, onSwitchToSignup }) {
   return (
     <div className="form-overlay">
       <section className="loginform">
-        <div className="loginform__logo">💰 BudgetBlox</div>
-        <div className="loginform__slogan">Welcome back! Please log in.</div>
-
+        <h1 className="loginform__header">💰Budget Blox</h1>
         <div className="loginform__card">
-          <button type="button" className="loginform__close-button" onClick={onClose}>
+          <h2 className="loginform__slogan">Welcome back!</h2>
+          <div className="loginform__signup">
+            Don’t have an account?{' '}
+            <a className="loginform__signup-btn" onClick={onSwitchToSignup}>
+              Sign Up
+            </a>
+          </div>
+          <button
+            type="button"
+            className="loginform__close-btn"
+            onClick={onClose}
+          >
             X
           </button>
           <form onSubmit={handleSubmit}>
             <div className="loginform__field">
-              <label className="loginform__label" htmlFor="login-email">Email</label>
+              <div className="loginform__label">
+                <span className="loginform__label-dashes"></span>
+                <label className="loginform__label-text" htmlFor="login-email">
+                  Email
+                </label>
+                <span className="loginform__label-dashes"></span>
+              </div>
+
               <input
                 className="loginform__input"
                 type="email"
@@ -37,7 +53,17 @@ function LoginForm({ isOpen, onClose, onSubmit, onSwitchToSignup }) {
             </div>
 
             <div className="loginform__field">
-              <label className="loginform__label" htmlFor="login-password">Password</label>
+              <div className="loginform__label">
+                <span className="loginform__label-dashes"></span>
+                <label
+                  className="loginform__label-text"
+                  htmlFor="login-password"
+                >
+                  Password
+                </label>
+                <span className="loginform__label-dashes"></span>
+              </div>
+
               <input
                 className="loginform__input"
                 type="password"
@@ -53,12 +79,19 @@ function LoginForm({ isOpen, onClose, onSubmit, onSwitchToSignup }) {
             <button type="submit" className="loginform__submit">
               Login
             </button>
-            <button type="button" className="signupform" onClick={onSwitchToSignup}>
-              Don’t have an account? Sign Up
-            </button>
           </form>
         </div>
       </section>
+      <div className="loginform__logo">
+        <img
+          src="src/assets/loginformimg.png"
+          alt="BudgetBlox Logo"
+          className="loginform__logo-img"
+        />
+        <span className="loginform__logo-text">
+          Spend smart, live bright, grow wealth.
+        </span>
+      </div>
     </div>
   );
 }

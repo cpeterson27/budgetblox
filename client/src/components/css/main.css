@@ -4,10 +4,10 @@
 
 /* Component-specific variables */
 :root {
-  --form-bg: #ffc37f;
+  /* --form-bg: #ffc37f; */
   --bg-overlay: rgba(190, 133, 133, 0.54);
-  --input-border: rgba(0,0,0,0.12);
-  --muted: rgba(0,0,0,0.6);
+  --input-border: rgba(0, 0, 0, 0.12);
+  --muted: rgba(0, 0, 0, 0.6);
 
   /* spacing variables — these could be removed if unused */
   --gap-xl: 80px;
@@ -15,7 +15,7 @@
   --gap-md: 24px;
   --gap-sm: 16px;
   --radius: 12px;
-  --font-mono: "Courier New", Courier, monospace;
+  --font-mono: 'Courier New', Courier, monospace;
   --base-font-size: 16px;
   --btn-bg: #1a1a1a;
   --btn-color: #fff;
@@ -23,15 +23,26 @@
 }
 
 /* Reset box-sizing */
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 /* Utility classes */
-.u-center { display: flex; justify-content: center; align-items: center; }
-.u-column { display: flex; flex-direction: column; }
+.u-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.u-column {
+  display: flex;
+  flex-direction: column;
+}
 
 /* ================================
-   COMPONENT: LOGINFORM
+   COMPONENT: LOGINFORM (Handled in loginform.css)
 =============================== */
+
+/*
 .loginform {
   display: flex;
   flex-direction: column;
@@ -99,6 +110,8 @@
   }
 }
 
+*/
+
 /* ================================
    COMPONENT: SIGNUPFORM
 =============================== */
@@ -109,7 +122,7 @@
   gap: 40px;
   max-width: 700px;
   margin: 80px auto;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 .signupform__card {
   background: #ffc37f;
@@ -117,7 +130,7 @@
   border-radius: 12px;
   width: 100%;
   max-width: 480px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 .signupform__header {
   display: flex;
@@ -131,7 +144,7 @@
 }
 .signupform__note {
   font-size: 1rem;
-  color: rgba(0,0,0,0.6);
+  color: rgba(0, 0, 0, 0.6);
   margin: 0;
 }
 .signupform__label {
@@ -147,13 +160,13 @@
 .signupform__input {
   padding: 10px 12px;
   font-size: 1rem;
-  border: 1px solid rgba(0,0,0,0.12);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 6px;
 }
 .signupform__suggestion {
   font-size: 1rem;
   margin-top: 12px;
-  color: rgba(0,0,0,0.6);
+  color: rgba(0, 0, 0, 0.6);
 }
 .signupform__submit {
   padding: 12px 20px;
@@ -168,7 +181,7 @@
 .signupform__submit:hover {
   background-color: #646cff;
 }
-@media (max-width:720px) {
+@media (max-width: 720px) {
   .signupform {
     max-width: 100%;
     padding-inline: 12px;
@@ -187,7 +200,7 @@
   width: 100%;
   max-width: 900px;
   margin: 40px auto;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 .addexpenseform__overlay {
   visibility: hidden;
@@ -198,7 +211,9 @@
   inset: 0;
   background-color: rgba(190, 133, 133, 0.54);
   opacity: 0;
-  transition: visibility 0.25s, opacity 0.25s ease-in;
+  transition:
+    visibility 0.25s,
+    opacity 0.25s ease-in;
   padding: 20px;
 }
 .addexpenseform__overlay--open {
@@ -211,7 +226,7 @@
   border-radius: 12px;
   width: 100%;
   max-width: 640px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   font-size: 1.125rem;
 }
 .addexpenseform__header {
@@ -236,7 +251,7 @@
 .addexpenseform__input {
   font-size: 1rem;
   padding: 10px 12px;
-  border: 1px solid rgba(0,0,0,0.12);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 6px;
 }
 .addexpenseform__submit {
@@ -253,7 +268,7 @@
 .addexpenseform__submit:hover {
   background-color: #646cff;
 }
-@media (max-width:720px) {
+@media (max-width: 720px) {
   .addexpenseform__container {
     padding: 16px;
   }
@@ -285,12 +300,12 @@
   text-align: center;
   font-weight: bold;
   font-size: 1.1rem;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 .blox__icon:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
-
-
