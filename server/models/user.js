@@ -1,20 +1,20 @@
-const mongoose = require('mongoose');
+const mongoose  = require('mongoose');
 const validator = require('validator');
-const bcrypt = require('bcryptjs');
+const bcrypt    = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
   name: {
-    type: String,
+    type:     String,
     required: true,
     minlength: 2,
     maxlength: 30,
   },
   email: {
-    type: String,
-    required: true,
-    unique: true,
+    type:      String,
+    required:  true,
+    unique:    true,
     lowercase: true,
-    trim: true,
+    trim:      true,
     validate: {
       validator(value) {
         return validator.isEmail(value);
@@ -23,18 +23,18 @@ const userSchema = new mongoose.Schema({
     },
   },
   password: {
-    type: String,
+    type:   String,
     required: true,
-    select: false,
+    select: false,  // so it’s excluded by default
   },
   createdAt: {
-    type: Date,
+    type:    Date,
     default: Date.now,
   },
 });
 
- // Pre-save hook
-userSchema.pre('save', async function hashPassword() {
+// Pre‑save hook to hash password when modified
+userSchema.pre('save', async function findUserByCredentials() {
   if (!this.isModified('password')) {
     return;
   }
@@ -42,32 +42,21 @@ userSchema.pre('save', async function hashPassword() {
   this.password = await bcrypt.hash(this.password, saltRounds);
 });
 
-// Static method for logging in
-userSchema.statics.findUserByCredentials = async function findUserByCredentials(
-  email,
-  password,
-) {
+// Static method for login
+userSchema.statics.findUserByCredentials = async function findUserByCredentials(email, password) {
   const user = await this.findOne({ email }).select('+password');
-
-  // 1. If user not found, THROW the error
   if (!user) {
     throw new Error('Invalid email or password');
   }
 
   const matched = await bcrypt.compare(password, user.password);
-
-  // 2. If password does not match, THROW the error
   if (!matched) {
-    throw new Error('InvalidCredentials');
+    throw new Error('Invalid email or password');
   }
 
-  // Convert the Mongoose document to a plain JavaScript object
-const userObject = user.toObject();
-// Delete the password property from the plain object
-delete userObject.password;
-
-  // Return the user object
-  return user;
+  const userObject = user.toObject();
+  delete userObject.password;
+  return userObject;
 };
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('User', userSchema);

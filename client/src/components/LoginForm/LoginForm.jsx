@@ -19,14 +19,12 @@ function LoginForm({ isOpen, onClose, onSubmit, onSwitchToSignup }) {
         <div className="loginform__slogan">Welcome back! Please log in.</div>
 
         <div className="loginform__card">
-          <button className="loginform__close-button" onClick={onClose}>
+          <button type="button" className="loginform__close-button" onClick={onClose}>
             X
           </button>
           <form onSubmit={handleSubmit}>
             <div className="loginform__field">
-              <label className="loginform__label" htmlFor="login-email">
-                Email
-              </label>
+              <label className="loginform__label" htmlFor="login-email">Email</label>
               <input
                 className="loginform__input"
                 type="email"
@@ -39,9 +37,7 @@ function LoginForm({ isOpen, onClose, onSubmit, onSwitchToSignup }) {
             </div>
 
             <div className="loginform__field">
-              <label className="loginform__label" htmlFor="login-password">
-                Password
-              </label>
+              <label className="loginform__label" htmlFor="login-password">Password</label>
               <input
                 className="loginform__input"
                 type="password"
@@ -53,15 +49,11 @@ function LoginForm({ isOpen, onClose, onSubmit, onSwitchToSignup }) {
                 minLength="8"
               />
             </div>
+
             <button type="submit" className="loginform__submit">
               Login
             </button>
-            <button
-              type="submit"
-              className="signupform"
-              onClick={onSwitchToSignup}
-            >
-              {' '}
+            <button type="button" className="signupform" onClick={onSwitchToSignup}>
               Don’t have an account? Sign Up
             </button>
           </form>

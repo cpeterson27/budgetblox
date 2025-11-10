@@ -8,6 +8,8 @@ const expensesRouter = require("./routes/expenses")
 const authRoutes = require("./routes/authRoutes")
 const { sendNotFound } = require("./utils/errors");
 
+const uri     = process.env.MONGODB_URI;
+
 const app = express();
 
 app.use(express.json());
@@ -30,7 +32,7 @@ app.use("/api/expenses", expensesRouter);
 
 mongoose.set("strictQuery", false);
 mongoose
-  .connect("mongodb://127.0.0.1:27017/budgetblox")
+  .connect(uri)
   .then(() => console.log("MongoDB connected"))
   .catch(console.error);
 

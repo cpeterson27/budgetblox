@@ -1,7 +1,7 @@
 const API_BASE = '/api';
 
 export const api = {
-  
+
   // Auth endpoints
   async signup(name, email, password) {
     try {
@@ -65,17 +65,14 @@ export const api = {
 
   async checkAuth() {
     try {
-      const response = await fetch(`${API_BASE}/auth/check`, {
-        credentials: 'include'
-      });
+      const response = await fetch('/api/auth/check', {
+    method: 'GET',
+    credentials: 'include'
+  });
 
       const data = await response.json();
+return data;
 
-      if (!response.ok) {
-        return { authenticated: false };
-      }
-
-      return data;
     } catch (err) {
       console.error('Auth check error:', err);
       return { authenticated: false };

@@ -22,16 +22,14 @@ function SignupForm({ isOpen, onClose, onSubmit }) {
     <section className="signupform">
       <div className="signupform__card">
         <form onSubmit={handleSubmit}>
-          <button className="signupform__close-button" onClick={onClose}>
+          <button type="button" className="signupform__close-button" onClick={onClose}>
             X
           </button>
 
           <h2 className="signupform__title">Sign Up</h2>
 
           <div className="signupform__inputs">
-            <label className="signupform__label" htmlFor="signup-name">
-              Name
-            </label>
+            <label className="signupform__label" htmlFor="signup-name">Name</label>
             <input
               className="signupform__input"
               type="text"
@@ -41,9 +39,7 @@ function SignupForm({ isOpen, onClose, onSubmit }) {
               required
             />
 
-            <label className="signupform__label" htmlFor="signup-email">
-              Email
-            </label>
+            <label className="signupform__label" htmlFor="signup-email">Email</label>
             <input
               className="signupform__input"
               type="email"
@@ -53,9 +49,7 @@ function SignupForm({ isOpen, onClose, onSubmit }) {
               required
             />
 
-            <label className="signupform__label" htmlFor="signup-password">
-              Password
-            </label>
+            <label className="signupform__label" htmlFor="signup-password">Password</label>
             <input
               className="signupform__input"
               type="password"
@@ -66,12 +60,7 @@ function SignupForm({ isOpen, onClose, onSubmit }) {
               minLength="8"
             />
 
-            <label
-              className="signupform__label"
-              htmlFor="signup-password-retype"
-            >
-              Retype Password
-            </label>
+            <label className="signupform__label" htmlFor="signup-password-retype">Retype Password</label>
             <input
               className="signupform__input"
               type="password"
