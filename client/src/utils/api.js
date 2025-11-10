@@ -1,14 +1,12 @@
 const API_BASE = '/api';
 
 export const api = {
-
-  // Auth endpoints
   async signup(name, email, password) {
     try {
       const response = await fetch(`${API_BASE}/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password })
+        body: JSON.stringify({ name, email, password }),
       });
 
       const data = await response.json();
@@ -29,7 +27,7 @@ export const api = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
       });
 
       const data = await response.json();
@@ -48,7 +46,7 @@ export const api = {
     try {
       const response = await fetch(`${API_BASE}/auth/logout`, {
         method: 'POST',
-        credentials: 'include'
+        credentials: 'include',
       });
 
       const data = await response.json();
@@ -66,13 +64,12 @@ export const api = {
   async checkAuth() {
     try {
       const response = await fetch('/api/auth/check', {
-    method: 'GET',
-    credentials: 'include'
-  });
+        method: 'GET',
+        credentials: 'include',
+      });
 
       const data = await response.json();
-return data;
-
+      return data;
     } catch (err) {
       console.error('Auth check error:', err);
       return { authenticated: false };
@@ -83,7 +80,7 @@ return data;
   async getExpenses() {
     try {
       const response = await fetch(`${API_BASE}/expenses`, {
-        credentials: 'include'
+        credentials: 'include',
       });
 
       const data = await response.json();
@@ -104,7 +101,7 @@ return data;
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify(expenseData)
+        body: JSON.stringify(expenseData),
       });
 
       const data = await response.json();
@@ -125,7 +122,7 @@ return data;
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify(expenseData)
+        body: JSON.stringify(expenseData),
       });
 
       const data = await response.json();
@@ -139,23 +136,15 @@ return data;
       throw new Error(err.message || 'Network error updating expense');
     }
   },
-
   async deleteExpense(id) {
-    try {
-      const response = await fetch(`${API_BASE}/expenses/${id}`, {
-        method: 'DELETE',
-        credentials: 'include'
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to delete expense');
-      }
-
-      return data;
-    } catch (err) {
-      throw new Error(err.message || 'Network error deleting expense');
-    }
+    const response = await fetch(`${API_BASE}/expenses/${id}`, {
+      method: 'DELETE',
+      credentials: 'include',
+    });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(data.message || `Failed to delete, status ${response.status}`);
   }
+  return data;
+  },
 };

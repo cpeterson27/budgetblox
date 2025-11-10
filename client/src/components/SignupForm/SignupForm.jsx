@@ -72,7 +72,7 @@ function SignupForm({ isOpen, onClose, onSubmit }) {
             />
           </div>
 
-          <button type="submit" className="signupform__submit">
+          <button type="submit" className="signupform__submit-btn">
             Sign Up
           </button>
         </form>

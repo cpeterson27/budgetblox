@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
-import HomePage from './pages/HomePage.jsx';
-import DashboardPage from './pages/DashboardPage';
+import HomePage from './pages/HomePage/HomePage.jsx';
+import DashboardPage from './pages/DashboardPage/DashboardPage.jsx';
 import { api } from './utils/api';
 
 function App() {
@@ -12,7 +12,9 @@ function App() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch('/api/auth/check', { credentials: 'include' });
+        const response = await fetch('/api/auth/check', {
+          credentials: 'include',
+        });
         if (response.ok) {
           setIsAuthenticated(true);
         } else {
@@ -40,7 +42,14 @@ function App() {
 
   if (isLoading) {
     return (
-      <div style={{ display:'flex', justifyContent:'center', alignItems:'center', height:'100vh' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+      >
         Loading...
       </div>
     );
@@ -75,6 +84,3 @@ function App() {
 }
 
 export default App;
-
-
-

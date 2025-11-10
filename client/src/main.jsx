@@ -3,11 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 
-import './components/css/variables.css';
-import './components/css/base.css';
-import './components/css/main.css';
-import './components/css/index.css';
-
 const basename = import.meta.env.MODE === 'production' ? '/budgetblox' : '';
 
 createRoot(document.getElementById('root')).render(
