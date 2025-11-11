@@ -60,19 +60,20 @@ return sendInternalError(res, 'Error retrieving expenses');
         return sendInternalError(res, 'Error updating expense');
     }
   }
-  async function deleteExpense(req, res) {
-    try {
-        const { id } = req.params;
-        const result = await Expense.deleteOne({_id: id, userId: req.userId});
-        if (result.deletedCount === 0) {
-            return sendNotFound(res, 'Expense not found or not accessible');
-        }
-        return sendSuccess(res, null, 'Expense deleted successfully');
-    } catch (err) {
-        console.error(err);
-        return sendInternalError(res, 'Error deleting expense');
+
+async function deleteExpense(req, res) {
+  const { id } = req.params;
+  try {
+    const result = await Expense.deleteOne({ _id: id, user: req.user._id });
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: 'Expense not found' });
     }
+    return res.status(200).json({ message: 'Expense deleted' });
+  } catch (err) {
+    console.error("Error in deleteExpense:", err);
+    return res.status(500).json({ message: 'Server error deleting expense' });
   }
+}
 
 module.exports = {
     getExpenses,

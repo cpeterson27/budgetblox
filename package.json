@@ -8,7 +8,7 @@
     "start-server": "node server/app.js",
     "dev-server": "nodemon server/app.js",
     "start-client": "npm run dev --prefix client",
-    "dev": "concurrently \"npm run dev-server\" \"npm run start-client\""
+    "dev:both": "concurrently \"npm run dev-server\" \"npm run start-client\""
   },
   "keywords": [],
   "author": "",

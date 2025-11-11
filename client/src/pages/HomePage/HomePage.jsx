@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import LoginForm from '../components/LoginForm/LoginForm';
-import SignupForm from '../components/SignupForm/SignupForm';
-import { api } from '../utils/api';
+import LoginForm from '../../components/LoginForm/LoginForm';
+import SignupForm from '../../components/SignupForm/SignupForm';
+import { api } from '../../utils/api';
+import './homepage.css';
 
 function HomePage({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
@@ -61,28 +62,6 @@ function HomePage({ onLogin }) {
         onClose={() => setShowSignup(false)}
         onSubmit={handleSignup}
       />
-      {user && (
-        <section className="user-home">
-          <h2 className="login-home-title">Welcome, {user.name}!</h2>
-          <div className="blox">
-            <div className="blox__icon">Housing</div>
-            <div className="blox__icon">Food</div>
-            <div className="blox__icon">Transport</div>
-            <div className="blox__icon">Entertainment</div>
-          </div>
-        </section>
-      )}
-      {!user && !showLogin && !showSignup && (
-        <div style={{ textAlign: 'center', marginTop: '40px' }}>
-          <button onClick={() => setShowLogin(true)}>Login</button>
-          <button
-            onClick={() => setShowSignup(true)}
-            style={{ marginLeft: '12px' }}
-          >
-            Signup
-          </button>
-        </div>
-      )}
     </div>
   );
 }

@@ -1,6 +1,5 @@
 const express = require('express');
 const jwt     = require('jsonwebtoken');
-const bcrypt  = require('bcryptjs');
 const User    = require('../models/user');
 
 const router  = express.Router();
@@ -54,7 +53,6 @@ router.post('/signup', async (req, res) => {
       return res.status(400).json({ message: 'Email already exists' });
     }
 
-    // DON'T hash here - the pre-save hook does it!
     const user = await User.create({ name, email, password }); // ← Remove bcrypt.hash
 
     const token = jwt.sign(
@@ -98,7 +96,6 @@ router.post('/login', async (req, res) => {
     }
 
     const user = await User.findUserByCredentials(email, password);
-    // At this point user.password is validated inside findUserByCredentials
     const token = jwt.sign(
       { userId: user._id, email: user.email },
       process.env.JWT_SECRET,

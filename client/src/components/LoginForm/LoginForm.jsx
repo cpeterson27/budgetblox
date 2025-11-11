@@ -13,18 +13,18 @@ function LoginForm({ isOpen, onClose, onSubmit, onSwitchToSignup }) {
   if (!isOpen) return null;
 
   return (
-    <div className="form-overlay">
-      <section className="loginform">
+    <div className="loginform">
+      <section className="loginform__card">
+                    <button type="button" className="loginform__close-button" onClick={onClose}>
+            X
+          </button>
         <div className="loginform__logo">💰 BudgetBlox</div>
         <div className="loginform__slogan">Welcome back! Please log in.</div>
 
         <div className="loginform__card">
-          <button type="button" className="loginform__close-button" onClick={onClose}>
-            X
-          </button>
           <form onSubmit={handleSubmit}>
-            <div className="loginform__field">
-              <label className="loginform__label" htmlFor="login-email">Email</label>
+            <div>
+              <label className="loginform__label">Email</label>
               <input
                 className="loginform__input"
                 type="email"
@@ -36,8 +36,8 @@ function LoginForm({ isOpen, onClose, onSubmit, onSwitchToSignup }) {
               />
             </div>
 
-            <div className="loginform__field">
-              <label className="loginform__label" htmlFor="login-password">Password</label>
+            <div>
+              <label className="loginform__label">Password</label>
               <input
                 className="loginform__input"
                 type="password"
@@ -53,7 +53,7 @@ function LoginForm({ isOpen, onClose, onSubmit, onSwitchToSignup }) {
             <button type="submit" className="loginform__submit">
               Login
             </button>
-            <button type="button" className="signupform" onClick={onSwitchToSignup}>
+            <button type="button" className="signupform_submit" onClick={onSwitchToSignup}>
               Don’t have an account? Sign Up
             </button>
           </form>
