@@ -1,5 +1,5 @@
 function SpendingPieChart({ expenses, categories }) {
-  // Calculate total spending per category
+
   const categoryTotals = categories.map(category => {
     const total = expenses
       .filter(e => e.category === category)
@@ -9,7 +9,6 @@ function SpendingPieChart({ expenses, categories }) {
 
   const totalSpending = categoryTotals.reduce((sum, ct) => sum + ct.total, 0);
 
-  // Colors for each category
   const colors = {
     'Food': '#FF6B9D',
     'Transportation': '#C8A2D5',
@@ -32,11 +31,9 @@ function SpendingPieChart({ expenses, categories }) {
             const startAngle = currentAngle;
             currentAngle += angle;
 
-            // Convert to radians
             const startRad = (startAngle - 90) * (Math.PI / 180);
             const endRad = (currentAngle - 90) * (Math.PI / 180);
 
-            // Calculate path
             const x1 = 100 + 80 * Math.cos(startRad);
             const y1 = 100 + 80 * Math.sin(startRad);
             const x2 = 100 + 80 * Math.cos(endRad);

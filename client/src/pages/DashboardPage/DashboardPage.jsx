@@ -64,18 +64,13 @@ function DashboardPage({ onLogout }) {
               <button className="button__click-here" onClick={onLogout}>
           Logout
         </button>
-      {/* Header */}
       <div className="dashboard-header">
         <p className="login-home-title">Building Blox Balances</p>
       </div>
 
-      {/* Overspending Alerts */}
       <OverspendingAlert overspendingCategories={overspendingCategories} />
-
-      {/* Spending Pie Chart */}
       <SpendingPieChart expenses={expenses} categories={categories} />
 
-      {/* Benchmark Comparison Section */}
       <div className="benchmark-section">
         <h2 className="section-title">📊 How You Compare to National Average</h2>
         <div className="benchmark-grid">
@@ -128,7 +123,6 @@ function DashboardPage({ onLogout }) {
         </div>
       </div>
 
-      {/* Add New Expense Button */}
       <button
         className="button__add-new"
         onClick={() => setShowAddExpense(true)}
@@ -136,7 +130,6 @@ function DashboardPage({ onLogout }) {
         Add New Expense
       </button>
 
-      {/* Category Expense Tables */}
       <div className="blox__expenses">
         {categories.map((category) => {
           const categoryExpenses = getCategoryExpenses(category);
@@ -145,14 +138,13 @@ function DashboardPage({ onLogout }) {
               <p className="block__table-titles">{category} Expenses</p>
 
               <div className="block__table">
-                {/* Table Header */}
+
                 <ul className="blox-table__columns header-row">
                   <li className="blox-table__column">Description</li>
                   <li className="blox-table__column">Date</li>
                   <li className="blox-table__column">Amount</li>
                 </ul>
 
-                {/* Table Rows */}
                 {categoryExpenses.length === 0 ? (
                   <p className="no-expenses-text">No expenses yet</p>
                 ) : (
@@ -180,7 +172,6 @@ function DashboardPage({ onLogout }) {
         })}
       </div>
 
-      {/* Blox Balances Summary */}
       <div className="balances-block">
         <p className="block__blox-title">Blox Balances</p>
         <div className="block__table">
@@ -203,7 +194,6 @@ function DashboardPage({ onLogout }) {
         </div>
       </div>
 
-      {/* Add Expense Form */}
       <AddExpenseForm
         isOpen={showAddExpense}
         onClose={() => setShowAddExpense(false)}
