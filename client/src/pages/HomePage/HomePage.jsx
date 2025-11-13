@@ -51,7 +51,8 @@ function HomePage({ onLogin }) {
       <LoginForm
         isOpen={showLogin}
         onClose={() => setShowLogin(false)}
-        onSubmit={handleLogin}
+        onLoginSubmit={handleLogin}
+        onSignupSubmit={handleSignup}
         onSwitchToSignup={() => {
           setShowLogin(false);
           setShowSignup(true);

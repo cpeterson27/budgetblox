@@ -11,13 +11,13 @@
   float: right;
 }
 
-.signupform__card {
+/* .signupform__card {
   background: #ffc37f;
   padding: 24px;
   border-radius: 8px;
   width: 100%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+} */
 
 .signupform__header {
   display: flex;
@@ -44,7 +44,7 @@
 }
 
 .signupform__submit-btn {
- margin-top: 12px;
+  margin-top: 12px;
   padding: 10px 20px;
   font-size: 1rem;
   border-radius: 6px;
@@ -52,20 +52,20 @@
   border: none;
   background-color: #1a1a1a;
   color: #fff;
-  transition: background 0.2s;}
+  transition: background 0.2s;
+}
 
 .signupform__inputs {
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
-.signupform__input {
+/* .signupform__input {
   padding: 10px 12px;
   font-size: 1rem;
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 6px;
-}
+} */
 
 .signupform__suggestion {
   font-size: 1.25rem;
@@ -79,6 +79,6 @@
     padding-inline: 12px;
   }
   .signupform__card {
-    padding: 16px;
+    padding: 0px 16px 8px;
   }
 }
