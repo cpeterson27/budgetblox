@@ -1,36 +1,43 @@
 const express = require('express');
-const jwt     = require('jsonwebtoken');
-const User    = require('../models/user');
+const jwt = require('jsonwebtoken');
+const User = require('../models/user');
+const { JWT_SECRET } = require('../utils/config');
 
-const router  = express.Router();
+const router = express.Router();
 
 // GET /api/auth/check
 router.get('/check', async (req, res) => {
   const token = req.cookies?.token;
   if (!token) {
-    return res.status(401).json({ authenticated: false, message: 'No token found' });
+    return res
+      .status(401)
+      .json({ authenticated: false, message: 'No token found' });
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user    = await User.findById(decoded.userId).select('-password');
+    const decoded = jwt.verify(token, JWT_SECRET);
+    const user = await User.findById(decoded.userId).select('-password');
     if (!user) {
       res.clearCookie('token');
-      return res.status(401).json({ authenticated: false, message: 'User not found' });
+      return res
+        .status(401)
+        .json({ authenticated: false, message: 'User not found' });
     }
 
     return res.json({
       authenticated: true,
       user: {
-        id:    user._id,
-        name:  user.name,
-        email: user.email
-      }
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      },
     });
   } catch (err) {
     console.error('JWT verification failed:', err.message);
     res.clearCookie('token');
-    return res.status(401).json({ authenticated: false, message: 'Invalid or expired token' });
+    return res
+      .status(401)
+      .json({ authenticated: false, message: 'Invalid or expired token' });
   }
 });
 
@@ -42,10 +49,14 @@ router.post('/signup', async (req, res) => {
       return res.status(400).json({ message: 'All fields are required' });
     }
     if (name.length < 2 || name.length > 30) {
-      return res.status(400).json({ message: 'Name must be between 2 and 30 characters' });
+      return res
+        .status(400)
+        .json({ message: 'Name must be between 2 and 30 characters' });
     }
     if (password.length < 8) {
-      return res.status(400).json({ message: 'Password must be at least 8 characters' });
+      return res
+        .status(400)
+        .json({ message: 'Password must be at least 8 characters' });
     }
 
     const existingUser = await User.findOne({ email });
@@ -57,15 +68,15 @@ router.post('/signup', async (req, res) => {
 
     const token = jwt.sign(
       { userId: user._id, email: user.email },
-      process.env.JWT_SECRET || 'secret',
-      { expiresIn: '7d' }
+      JWT_SECRET,
+      { expiresIn: '7d' },
     );
 
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60 * 1000
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     return res.status(201).json({
@@ -73,17 +84,21 @@ router.post('/signup', async (req, res) => {
       user: {
         id: user._id,
         name: user.name,
-        email: user.email
-      }
+        email: user.email,
+      },
     });
   } catch (err) {
     console.error('Signup error:', err);
     if (err.name === 'ValidationError') {
       return res.status(400).json({
-        message: Object.values(err.errors).map(e => e.message).join(', ')
+        message: Object.values(err.errors)
+          .map((e) => e.message)
+          .join(', '),
       });
     }
-    return res.status(500).json({ message: 'Server error during signup', error: err.message });
+    return res
+      .status(500)
+      .json({ message: 'Server error during signup', error: err.message });
   }
 });
 
@@ -92,34 +107,38 @@ router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
-      return res.status(400).json({ message: 'Email and password are required' });
+      return res
+        .status(400)
+        .json({ message: 'Email and password are required' });
     }
 
     const user = await User.findUserByCredentials(email, password);
     const token = jwt.sign(
       { userId: user._id, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: '7d' }
+      JWT_SECRET,
+      { expiresIn: '7d' },
     );
 
     res.cookie('token', token, {
       httpOnly: true,
-      secure:   process.env.NODE_ENV === 'production',
+      secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-      maxAge:   7 * 24 * 60 * 60 * 1000
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     return res.json({
       message: 'Login successful',
       user: {
-        id:    user._id,
-        name:  user.name,
-        email: user.email
-      }
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      },
     });
   } catch (err) {
     console.error('Login error:', err);
-    return res.status(401).json({ message: err.message || 'Invalid email or password' });
+    return res
+      .status(401)
+      .json({ message: err.message || 'Invalid email or password' });
   }
 });
 
@@ -130,4 +149,3 @@ router.post('/logout', (req, res) => {
 });
 
 module.exports = router;
-

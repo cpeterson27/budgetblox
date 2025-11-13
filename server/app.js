@@ -7,8 +7,9 @@ const usersRouter = require('./routes/users');
 const expensesRouter = require('./routes/expenses');
 const authRoutes = require('./routes/authRoutes');
 const { sendNotFound } = require('./utils/errors');
+const { MONGODB_URI, PORT } = require('./utils/config');
 
-const uri = process.env.MONGODB_URI;
+const uri = MONGODB_URI;
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.use(
     origin:
       process.env.NODE_ENV === 'production'
         ? process.env.FRONTEND_URL
-        : 'http://localhost:5173',
+        : 'http://localhost:5176',
     credentials: true,
   }),
 );
@@ -37,11 +38,8 @@ mongoose
   .then(() => console.log('MongoDB connected'))
   .catch(console.error);
 
-app.use((req, res) => {
-  res.status(sendNotFound).json({ message: 'Requested resource not found' });
-});
+app.use((req, res) => sendNotFound(res, 'Requested resource not found'));
 
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });

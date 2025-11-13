@@ -15,12 +15,14 @@
   ],
   "routes": [
     {
-      "src": "/api/(.)",
+      "src": "/api/(.*)",
       "dest": "/server/api/index.js"
-    },
+    }
+  ],
+  "rewrites": [
     {
-      "src": "/(.)",
-      "dest": "/client/$1"
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
     }
   ]
 }

@@ -68,6 +68,11 @@ export const api = {
         credentials: 'include',
       });
 
+if (!response.ok) {
+      console.error('Auth check failed with status:', response.status);
+      return { authenticated: false };
+    }
+
       const data = await response.json();
       return data;
     } catch (err) {
