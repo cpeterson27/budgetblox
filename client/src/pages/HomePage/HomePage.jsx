@@ -76,7 +76,7 @@ function HomePage({ onLogin }) {
         </section>
         <div className="loginform__logo">
           <img
-            src="/assets/loginformimg.png"
+            src="assets/loginformimg.png"
             alt="BudgetBlox Logo"
             className="loginform__logo-img"
           />
