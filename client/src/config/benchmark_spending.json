@@ -1,22 +1,22 @@
 {
   "average_spending": {
-    "Education": 29092.95,
-    "Entertainment": 22301.68,
-    "Gas": 29012.6,
-    "Grocery": 24992.11,
-    "Healthcare": 28861.12,
-    "Restaurant": 21168.5,
-    "Retail": 35412.2,
-    "Travel": 51107.04
+    "Education": 495.21,
+    "Entertainment": 368.61,
+    "Gas": 496.61,
+    "Grocery": 427.38,
+    "Healthcare": 502.27,
+    "Restaurant": 352.88,
+    "Retail": 597.97,
+    "Travel": 872.92
   },
   "median_spending": {
-    "Education": 796.44,
-    "Entertainment": 647.36,
-    "Gas": 794.71,
-    "Grocery": 708.2,
-    "Healthcare": 787.04,
-    "Restaurant": 612.4,
-    "Retail": 1086.53,
-    "Travel": 1680.4
+    "Education": 449.37,
+    "Entertainment": 269.23,
+    "Gas": 444.78,
+    "Grocery": 337.2,
+    "Healthcare": 447.68,
+    "Restaurant": 246.63,
+    "Retail": 505.45,
+    "Travel": 704.67
   }
 }

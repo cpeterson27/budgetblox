@@ -45,24 +45,50 @@ function HomePage({ onLogin }) {
       alert('Signup failed: ' + err.message);
     }
   };
-
   return (
     <div>
-      <LoginForm
-        isOpen={showLogin}
-        onClose={() => setShowLogin(false)}
-        onLoginSubmit={handleLogin}
-        onSignupSubmit={handleSignup}
-        onSwitchToSignup={() => {
-          setShowLogin(false);
-          setShowSignup(true);
-        }}
-      />
-      <SignupForm
-        isOpen={showSignup}
-        onClose={() => setShowSignup(false)}
-        onSubmit={handleSignup}
-      />
+      <div className="form-overlay">
+        <section className="loginform">
+          <img
+            src="assets/logo.png"
+            alt="Logo"
+            className="loginform__logo-header"
+          />
+          {user ? <div>Welcome, {user.name}</div> : <></>}
+          <LoginForm
+            isOpen={showLogin}
+            onClose={() => setShowLogin(false)}
+            onSubmit={handleLogin}
+            onSwitchToSignup={() => {
+              setShowLogin(false);
+              setShowSignup(true);
+            }}
+          />
+          <SignupForm
+            isOpen={showSignup}
+            onClose={() => setShowSignup(false)}
+            onSubmit={handleSignup}
+            onSwitchToLogin={() => {
+              setShowLogin(true);
+              setShowSignup(false);
+            }}
+          />
+        </section>
+        <div className="loginform__logo">
+          <img
+            src="/assets/loginformimg.png"
+            alt="BudgetBlox Logo"
+            className="loginform__logo-img"
+          />
+          <span className="loginform__logo-text">
+            Spend smart,
+            <br />
+            live bright,
+            <br />
+            grow wealth.
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
