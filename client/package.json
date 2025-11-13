@@ -5,7 +5,7 @@
   "type": "module",
   "homepage": "https://cpeterson27.github.io/budgetblox",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
