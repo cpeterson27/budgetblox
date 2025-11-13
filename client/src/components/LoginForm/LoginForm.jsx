@@ -6,7 +6,6 @@ function LoginForm({
   onClose,
   onLoginSubmit,
   onSignupSubmit,
-  onSwitchToSignup,
 }) {
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
@@ -20,12 +19,12 @@ function LoginForm({
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    onLoginSubmit(loginEmail, password);
+    onLoginSubmit(loginEmail, loginPassword);
   };
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    if (password !== passwordRetype) {
+    if (signupPassword !== singupPasswordRetype) {
       alert('Passwords do not match');
       return;
     }
