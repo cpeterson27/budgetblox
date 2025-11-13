@@ -11,10 +11,6 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
-
-    // Apply the base path
-    base: BASE_PATH,
-
     server: {
       open: true,
       proxy: {
