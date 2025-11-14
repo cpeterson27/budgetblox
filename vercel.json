@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd client && npm install && npx vite build",
+  "buildCommand": "cd client && npm install && ./node_modules/.bin/vite build",
   "outputDirectory": "client/dist",
   "installCommand": "npm install",
   "routes": [
