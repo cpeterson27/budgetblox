@@ -1,11 +1,26 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "buildCommand": "npm run build --prefix client",
-  "outputDirectory": "client/dist",
+  "builds": [
+    {
+      // 1. FRONTEND BUILD: Uses the static builder for your client
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        // Runs the build script in the client directory
+        "buildCommand": "npm run build --prefix client",
+        "outputDirectory": "dist"
+      }
+    },
+    {
+      // 2. BACKEND FUNCTION: Uses the Node.js builder for your API
+      "src": "api/index.js",
+      "use": "@vercel/node@20.x"
+    }
+  ],
   "functions": {
     "api/index.js": {
-      "maxDuration": 30
+      "runtime": "@vercel/node@20.x"
     }
   },
   "rewrites": [
