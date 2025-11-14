@@ -34,6 +34,10 @@ budgetblox/
 
 ## SE Setup
 
+## 🚀 Live Demo
+
+Check it out live at: https://budgetblox-rxr8z03sm-cassies-projects-67fd5d41.vercel.app/dashboard
+
 ## Features
 
 - User authentication (login & signup)
@@ -48,6 +52,7 @@ budgetblox/
 - **Backend**: Node.js, Express
 - **Database**: MongoDB (via Mongoose)
 - **Authentication**: JWT
+- **Deployment**: Vercel for both frontend and backend
 
 ## Getting Started
 
@@ -65,13 +70,17 @@ git clone https://github.com/cpeterson27/budgetblox.git
 cd budgetblox
 ```
 
-#### 2. Install dependencies:
+#### 2. Install dependencies for both frontend & backend.
 
-```
-npm install
-cd client
-npm install
-cd ..
+Create a .env file with your environment variables (DB URI, JWT secret, etc).
+
+Run locally:
+
+npm run dev   # or yarn dev
+
+
+Open http://localhost:3000
+ (or your port) in your browser.
 ```
 
 #### 3. Set up environment variables:
