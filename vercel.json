@@ -4,17 +4,20 @@
   "env": {
     "FORCE_REBUILD": "true"
   },
-  "buildCommand": "cd client && npm install && npm run build",
   "outputDirectory": "client/dist",
-  "installCommand": "npm install",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/index.js"
+      "source": "/api/:path*",
+      "destination": "/server/api/:path*"
     },
     {
-      "src": "/(.*)",
-      "dest": "/client/dist/index.html"
+      "source": "/assets/:path*",
+      "destination": "/client/dist/assets/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/client/dist/index.html"
     }
   ]
 }
+
