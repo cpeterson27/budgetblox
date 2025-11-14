@@ -9,8 +9,8 @@
   "installCommand": "npm install",
   "functions": {
     "api/index.js": {
-      "runtime": "vercel/node@20.x"
-    }
+      "memory": 1024,
+      "maxDuration": 10}
   },
   "rewrites": [
     {
