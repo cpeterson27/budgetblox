@@ -8,9 +8,7 @@
   "buildCommand": "cd client && npm install && npm run build",
   "installCommand": "npm install",
   "functions": {
-    "api/index.js": {
-      "memory": 1024,
-      "maxDuration": 10}
+    "api/index.js": {}
   },
   "rewrites": [
     {
