@@ -9,7 +9,7 @@ export const api = {
         body: JSON.stringify({ name, email, password }),
       });
 
-      const contentType = response.headers.get('content‑type') || '';
+      const contentType = response.headers.get('content-type') || '';
       let data;
       if (contentType.includes('application/json')) {
         data = await response.json();
@@ -37,7 +37,7 @@ export const api = {
         body: JSON.stringify({ email, password }),
       });
 
-      const contentType = response.headers.get('content‑type') || '';
+      const contentType = response.headers.get('content-type') || '';
       let data;
       if (contentType.includes('application/json')) {
         data = await response.json();
@@ -63,7 +63,7 @@ export const api = {
         credentials: 'include',
       });
 
-      const contentType = response.headers.get('content‑type') || '';
+      const contentType = response.headers.get('content-type') || '';
       let data;
       if (contentType.includes('application/json')) {
         data = await response.json();
@@ -89,7 +89,7 @@ export const api = {
         credentials: 'include',
       });
 
-      const contentType = response.headers.get('content‑type') || '';
+      const contentType = response.headers.get('content-type') || '';
       if (!response.ok) {
         // If non‑ok, attempt JSON else fallback
         if (contentType.includes('application/json')) {
@@ -129,7 +129,7 @@ export const api = {
         credentials: 'include',
       });
 
-      const contentType = response.headers.get('content‑type') || '';
+      const contentType = response.headers.get('content-type') || '';
       let data;
       if (contentType.includes('application/json')) {
         data = await response.json();
@@ -157,7 +157,7 @@ export const api = {
         body: JSON.stringify(expenseData),
       });
 
-      const contentType = response.headers.get('content‑type') || '';
+      const contentType = response.headers.get('content-type') || '';
       let data;
       if (contentType.includes('application/json')) {
         data = await response.json();
@@ -185,7 +185,7 @@ export const api = {
         body: JSON.stringify(expenseData),
       });
 
-      const contentType = response.headers.get('content‑type') || '';
+      const contentType = response.headers.get('content-type') || '';
       let data;
       if (contentType.includes('application/json')) {
         data = await response.json();
@@ -211,7 +211,7 @@ export const api = {
         credentials: 'include',
       });
 
-      const contentType = response.headers.get('content‑type') || '';
+      const contentType = response.headers.get('content-type') || '';
       let data = {};
       if (contentType.includes('application/json')) {
         data = await response.json();
