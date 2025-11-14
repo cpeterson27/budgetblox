@@ -34,6 +34,8 @@ budgetblox/
 
 ## SE Setup
 
+BudgetBlox is a full-stack personal finance application that helps users track expenses, manage budgets, and visualize spending habits through a clean and intuitive interface. Built with a modern MERN architecture and deployed on Vercel, it offers secure authentication, real-time expense updates, and a responsive UI designed to make money management simple and accessible.
+
 ## 🚀 Live Demo
 
 Check it out live at: https://budgetblox-rxr8z03sm-cassies-projects-67fd5d41.vercel.app/dashboard
