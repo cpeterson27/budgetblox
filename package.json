@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "npx eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm install && npm run build",
     "start-server": "node server/app.js",
     "dev-server": "nodemon server/app.js",
     "start-client": "npm run dev --prefix client",
