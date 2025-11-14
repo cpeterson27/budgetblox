@@ -5,7 +5,7 @@ export const api = {
     try {
       const response = await fetch(`${API_BASE}/auth/signup`, {
         method: 'POST',
-        headers: { 'Content‑Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
       });
 
@@ -32,7 +32,7 @@ export const api = {
     try {
       const response = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
-        headers: { 'Content‑Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
         body: JSON.stringify({ email, password }),
       });
@@ -152,7 +152,7 @@ export const api = {
     try {
       const response = await fetch(`${API_BASE}/expenses`, {
         method: 'POST',
-        headers: { 'Content‑Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
         body: JSON.stringify(expenseData),
       });
@@ -180,7 +180,7 @@ export const api = {
     try {
       const response = await fetch(`${API_BASE}/expenses/${id}`, {
         method: 'PUT',
-        headers: { 'Content‑Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
         body: JSON.stringify(expenseData),
       });
