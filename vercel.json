@@ -12,7 +12,6 @@
       "runtime": "nodejs20.x"
     }
   },
-  "version": 2,
   "rewrites": [
     {
       "source": "/api/:path*",
