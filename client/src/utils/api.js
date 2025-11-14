@@ -129,7 +129,14 @@ export const api = {
         credentials: 'include',
       });
 
-      const contentType = response.headers.get('content‑type') || '';
+      let contentType = '';
+      try {
+        contentType = response.headers.get('content‑type') || '';
+      } catch (hdrErr) {
+        console.error('Error reading response headers in getExpenses:', hdrErr, response.headers);
+        throw new Error('Invalid response headers from server');
+      }
+
       let data;
       if (contentType.includes('application/json')) {
         data = await response.json();
