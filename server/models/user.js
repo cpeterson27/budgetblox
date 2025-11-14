@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    select: false, // so it’s excluded by default
+    select: false, // so it's excluded by default
   },
   createdAt: {
     type: Date,
@@ -57,5 +57,8 @@ userSchema.statics.findUserByCredentials = async function findUserByCredentials(
   if (!matched) {
     throw new Error('Invalid email or password');
   }
+
+  return user; 
+};
 
 module.exports = mongoose.model('User', userSchema);
