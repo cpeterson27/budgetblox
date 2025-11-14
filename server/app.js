@@ -34,7 +34,10 @@ app.use('/api/expenses', expensesRouter);
 
 mongoose.set('strictQuery', false);
 mongoose
-  .connect(uri)
+  .connect(uri, {
+    serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+    socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
+  })
   .then(() => console.log('MongoDB connected'))
   .catch(console.error);
 
