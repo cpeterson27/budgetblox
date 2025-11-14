@@ -90,58 +90,7 @@ Open http://localhost:3000
 ```
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
-PORT=5000
-```
-
-- (Optional) Add any other required environment variables.
-
-#### 4. Start the backend server:
-
-```
-npm run dev-server
-```
-
-#### 5. Start the frontend development server:
-
-```
-cd client
-npm run dev
-```
-
-#### 6. Visit the app:
-
-- Open http://localhost:5173 in your browser.
-
-## Project Structure
-
-```
-budgetblox/
-  client/           # React frontend
-    src/
-      components/
-      pages/
-      utils/
-      ...
-    public/
-    ...
-  server/           # Express backend
-    controllers/
-    models/
-    routes/
-    ...
-  .env
-  [package.json](http://_vscodecontentref_/1)
-  [README.md](http://_vscodecontentref_/2)
-```
-
-## Scripts
-
-- `npm run dev-server` — Start backend in development mode
-- `cd client && npm run dev` — Start frontend in development mode
-
-## Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+PORT=3001
 
 ## License
 
