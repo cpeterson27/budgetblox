@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "env": {
+    "FORCE_REBUILD": "true"
+  },
   "routes": [
     {
       "src": "/api/(.*)",
