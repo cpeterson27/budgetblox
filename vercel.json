@@ -3,8 +3,7 @@
   "version": 2,
   "functions": {
     "server/api/index.js": {
-      "runtime": "@vercel/node@20.x"
-    }
+      }
   },
   "rewrites": [
     {
