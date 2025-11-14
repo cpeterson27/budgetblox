@@ -1,10 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "buildCommand": "npm run build --prefix client",
-  "outputDirectory": "client/dist",
   "functions": {
-    "server/api/index.js": {}
+    "server/api/index.js": {
+      "runtime": "@vercel/node@20.x"
+    }
   },
   "rewrites": [
     {
