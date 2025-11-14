@@ -127,6 +127,9 @@ export const api = {
       const response = await fetch(`${API_BASE}/expenses`, {
         method: 'GET',
         credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+        },
       });
 
       const contentType = response.headers.get('content-type') || '';
