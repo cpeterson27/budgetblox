@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 
-const basename = import.meta.env.MODE === 'production' ? '/budgetblox' : '';
+const basename = import.meta.env.MODE === 'production' ? '/' : '';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
