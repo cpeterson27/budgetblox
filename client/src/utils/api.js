@@ -5,11 +5,18 @@ export const api = {
     try {
       const response = await fetch(`${API_BASE}/auth/signup`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content‑Type': 'application/json' },
         body: JSON.stringify({ name, email, password }),
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content‑type') || '';
+      let data;
+      if (contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        throw new Error(text || 'Signup failed (non‑JSON response)');
+      }
 
       if (!response.ok) {
         throw new Error(data.message || 'Signup failed');
@@ -25,12 +32,19 @@ export const api = {
     try {
       const response = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content‑Type': 'application/json' },
         credentials: 'include',
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content‑type') || '';
+      let data;
+      if (contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        throw new Error(text || 'Login failed (non‑JSON response)');
+      }
 
       if (!response.ok) {
         throw new Error(data.message || 'Login failed');
@@ -49,7 +63,14 @@ export const api = {
         credentials: 'include',
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content‑type') || '';
+      let data;
+      if (contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        throw new Error(text || 'Logout failed (non‑JSON response)');
+      }
 
       if (!response.ok) {
         throw new Error(data.message || 'Logout failed');
@@ -63,21 +84,40 @@ export const api = {
 
   async checkAuth() {
     try {
-      const response = await fetch('/api/auth/check', {
+      const response = await fetch(`${API_BASE}/auth/check`, {
         method: 'GET',
         credentials: 'include',
       });
 
-if (!response.ok) {
-      console.error('Auth check failed with status:', response.status);
-      return { authenticated: false };
-    }
+      const contentType = response.headers.get('content‑type') || '';
+      if (!response.ok) {
+        // If non‑ok, attempt JSON else fallback
+        if (contentType.includes('application/json')) {
+          const errorData = await response.json();
+          return {
+            authenticated: false,
+            message: errorData.message || `Status ${response.status}`,
+          };
+        } else {
+          const text = await response.text();
+          return {
+            authenticated: false,
+            message: text || `Status ${response.status}`,
+          };
+        }
+      }
+
+      if (!contentType.includes('application/json')) {
+        const text = await response.text();
+        throw new Error(`Expected JSON but got: ${text}`);
+      }
 
       const data = await response.json();
+      // Ensure shape: { authenticated: boolean, maybe user, maybe message }
       return data;
     } catch (err) {
       console.error('Auth check error:', err);
-      return { authenticated: false };
+      return { authenticated: false, message: err.message };
     }
   },
 
@@ -85,10 +125,18 @@ if (!response.ok) {
   async getExpenses() {
     try {
       const response = await fetch(`${API_BASE}/expenses`, {
+        method: 'GET',
         credentials: 'include',
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content‑type') || '';
+      let data;
+      if (contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        throw new Error(text || 'Failed to load expenses (non‑JSON response)');
+      }
 
       if (!response.ok) {
         throw new Error(data.message || 'Failed to load expenses');
@@ -104,12 +152,19 @@ if (!response.ok) {
     try {
       const response = await fetch(`${API_BASE}/expenses`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content‑Type': 'application/json' },
         credentials: 'include',
         body: JSON.stringify(expenseData),
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content‑type') || '';
+      let data;
+      if (contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        throw new Error(text || 'Failed to add expense (non‑JSON response)');
+      }
 
       if (!response.ok) {
         throw new Error(data.message || 'Failed to add expense');
@@ -125,12 +180,19 @@ if (!response.ok) {
     try {
       const response = await fetch(`${API_BASE}/expenses/${id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content‑Type': 'application/json' },
         credentials: 'include',
         body: JSON.stringify(expenseData),
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content‑type') || '';
+      let data;
+      if (contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        const text = await response.text();
+        throw new Error(text || 'Failed to update expense (non‑JSON response)');
+      }
 
       if (!response.ok) {
         throw new Error(data.message || 'Failed to update expense');
@@ -141,15 +203,32 @@ if (!response.ok) {
       throw new Error(err.message || 'Network error updating expense');
     }
   },
+
   async deleteExpense(id) {
-    const response = await fetch(`${API_BASE}/expenses/${id}`, {
-      method: 'DELETE',
-      credentials: 'include',
-    });
-  const data = await response.json().catch(() => ({}));
-  if (!response.ok) {
-    throw new Error(data.message || `Failed to delete, status ${response.status}`);
-  }
-  return data;
+    try {
+      const response = await fetch(`${API_BASE}/expenses/${id}`, {
+        method: 'DELETE',
+        credentials: 'include',
+      });
+
+      const contentType = response.headers.get('content‑type') || '';
+      let data = {};
+      if (contentType.includes('application/json')) {
+        data = await response.json();
+      } else {
+        // If nothing or HTML, fallback to empty obj
+        await response.text();
+      }
+
+      if (!response.ok) {
+        throw new Error(
+          data.message || `Failed to delete, status ${response.status}`,
+        );
+      }
+
+      return data;
+    } catch (err) {
+      throw new Error(err.message || `Network error deleting expense`);
+    }
   },
 };

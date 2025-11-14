@@ -15,6 +15,7 @@ function App() {
         const response = await fetch('/api/auth/check', {
           credentials: 'include',
         });
+
         if (response.ok) {
           setIsAuthenticated(true);
         } else {
